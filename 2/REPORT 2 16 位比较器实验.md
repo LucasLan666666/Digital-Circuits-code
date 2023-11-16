@@ -33,13 +33,13 @@
 1. 由全加器真值表可知, 向高位的进位信号在两种情况下产生:  
     $A \cdot B = 1$  
     $A + B = 1, C_{in} = 1$  
-2. 用$C_i$表示第$i$位的进位信号, 有:  
+2. 用 $C_i$ 表示第$i$位的进位信号, 有:  
      $C_{i+1} = A_iB_i + (A_i + B_i)C_i$  
 3. 设$G_i = A_iB_i$为进位生成函数, $P_i = A_i + B_i$为进位传递函数, 则有:  
     $C_{i+1} = G_i + P_iC_i$  
     另一方面, 由于$S_i = A_i \bigoplus B_i \bigoplus C_i$, 且我们发现$C_{i+1} = A_iB_i + (A_i + B_i)C_i = A_iB_i + (A_i \bigoplus B_i)C_i$,  
     因此可以将$P_i$的定义修改成$P_i = A_i \bigoplus B_i$  
-    于是有:
+    于是有:  
     $C_0 = C_{in}$  
     $C_1 = G_1 + P_1C_0 = G_1 + P_1C_{in}$  
     $C_2 = G_2 + P_2C_1 = G_2 + P_2(G_1 + P_1C_{in}) = G_2 + P_2G_1 + P_2P_1C_{in}$  
