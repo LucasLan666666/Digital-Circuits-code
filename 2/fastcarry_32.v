@@ -19,7 +19,7 @@ module fastcarry_32 (
     assign    P0 =  A ^ B;
     assign    G0 =  A & B;
     assign     S = P0 ^ C0;
-    assign  Cout = G1[7] || P1[7] && C1[7];
+    assign  Cout = C2[2];
 
     fastcarry_4_2  f00 (
         .Pin  ( P0 [ 3: 0]), 

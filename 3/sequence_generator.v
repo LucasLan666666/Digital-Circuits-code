@@ -1,9 +1,6 @@
-`timescale 1ns / 1ps
-
-module fsm_2(
+module sequence_generator(
     input clk,
     input rstn,
-    input a,
     output reg out
     );
 
@@ -25,7 +22,6 @@ module fsm_2(
     always@(state or a)begin
         case(state)
         S0:begin
-			out = 1'b0;
             if (a == 1'b0)begin
                 next_state = S0;
             end
@@ -34,13 +30,17 @@ module fsm_2(
             end
         end
         S1:begin
-			out = 1'b1;
             next_state = a ? S1 : S0;
         end
-        default: begin
-			out = 1'bx;
-			next_state = S0;
-		end
+        default: next_state = S0;
+        endcase
+    end
+
+    always @(state) begin
+        case(state)
+        S0:out = 1'b0;
+        S1:out = 1'b1;
+        default: out = 1'bx;
         endcase
     end
 endmodule
