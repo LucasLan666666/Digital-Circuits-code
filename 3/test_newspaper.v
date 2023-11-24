@@ -20,15 +20,11 @@ module test_newspaper(
         #1.1 rstn = 1;
     end
 
-    initial begin
-        coin = 0;
-    end
-
     always begin
         #1 clk = ~clk;
     end
 
-    always #0.5 begin
-        #2 coin = $random() % 2;
+    always begin
+        #2 coin = $urandom() % 3;
     end
 endmodule

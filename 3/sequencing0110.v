@@ -14,7 +14,7 @@ module sequencing0110(
     reg [3:0] state;
     reg [3:0] next_state;
 
-    always@(negedge rstn or posedge clk)begin
+    always @(negedge rstn or posedge clk) begin
         if (!rstn) begin
             state <= S0;
         end
@@ -23,21 +23,21 @@ module sequencing0110(
         end
     end
 
-    always@(state or in)begin
+    always @(state or in) begin
         case(state)
-        S0:begin
-            next_state = !in ? S1 : S0;
+        S0: begin
+            next_state =  in ? S0 : S1;
         end
-        S1:begin
+        S1: begin
             next_state =  in ? S2 : S1;
         end
-        S2:begin
+        S2: begin
             next_state =  in ? S3 : S1;
         end
-        S3:begin
-            next_state = !in ? S4 : S0;
+        S3: begin
+            next_state =  in ? S0 : S4;
         end
-        S4:begin
+        S4: begin
             next_state =  in ? S2 : S1;
         end
         default: next_state = S0;

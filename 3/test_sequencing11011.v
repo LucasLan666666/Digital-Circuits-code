@@ -20,15 +20,11 @@ module test_sequencing11011(
         #1.1 rstn = 1;
     end
 
-    initial begin
-        in = 0;
-    end
-
     always begin
         #1 clk = ~clk;
     end
 
-    always #0.5 begin
+    always begin
         #2 in = $random() % 2;
     end
 endmodule
