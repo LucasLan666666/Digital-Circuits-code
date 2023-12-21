@@ -1,6 +1,6 @@
 `timescale 1ns / 1ps
 
-module fifo_test(
+module fifo2_test(
 );
     reg          clk;
     reg          rstn;
@@ -8,10 +8,10 @@ module fifo_test(
     wire         input_enable;
     wire         output_valid;
     reg          output_enable;
-    reg  [15: 0] data_in;
-    wire [ 7: 0] data_out;
+    reg  [ 7: 0] data_in;
+    wire [15: 0] data_out;
 
-    fifo inst_fifo_0(
+    fifo2 inst_fifo2_0(
         .clk(                       clk),
         .rstn(                     rstn),
         .input_valid(       input_valid),
@@ -37,12 +37,16 @@ module fifo_test(
 
     always begin
         #4;
-        data_in = $random() % 17'b1_00000000_00000000;
+        data_in = $random() % 9'b1_0000_0000;
     end
 
     always begin
         #4;
-        input_valid   = $random() % 2'b10;
-        output_enable = $random() % 2'b10;
+        input_valid   = ~input_valid;
+    end
+
+    always begin
+        #12;
+        output_enable = ~output_enable;
     end
 endmodule
