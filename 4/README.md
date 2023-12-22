@@ -104,7 +104,7 @@ H2 & I2 --> End
    ```Verilog
    if (write_addr == 31) begin
        input_enable   <= 1'b0;
-       write_addr     <= 0;  // 注意这里
+       write_addr     <= 5'b0;  // 注意这里
        mem[31][ 7: 0] <= data_in[ 7: 0];
    end
    else begin
