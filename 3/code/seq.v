@@ -6,7 +6,7 @@ module seq(
 
     reg [12:0] seq;
 
-    always@(posedge clk)begin
+    always @(posedge clk) begin
         if (!rstn) begin
             seq <= 13'b0010111001001;
         end
